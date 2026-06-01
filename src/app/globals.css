@@ -40,3 +40,148 @@ body {
     scroll-behavior: auto;
   }
 }
+
+/* Track Hub — artwork-driven world theme (scoped to .world-theme) */
+.world-theme {
+  --world-primary: #3d3528;
+  --world-secondary: #5c4f38;
+  --world-accent: #c9a962;
+  --world-background: #08080a;
+  --world-muted: #9b9690;
+  --world-glow: rgba(201, 169, 98, 0.22);
+}
+
+.world-page-wash {
+  opacity: 0;
+  background: radial-gradient(
+    ellipse 120% 80% at 50% -10%,
+    color-mix(in srgb, var(--world-primary) 28%, transparent),
+    transparent 68%
+  );
+  transition: opacity 0.65s ease;
+}
+
+.world-theme--ready .world-page-wash {
+  opacity: 1;
+}
+
+.world-hero-glow {
+  background: radial-gradient(
+    ellipse at center,
+    var(--world-glow) 0%,
+    transparent 68%
+  );
+}
+
+.world-theme .world-hero-gradient-bottom {
+  background: linear-gradient(
+    to top,
+    var(--world-background) 0%,
+    color-mix(in srgb, var(--world-background) 25%, transparent) 45%,
+    transparent 100%
+  );
+}
+
+.world-theme .world-hero-gradient-top {
+  background: linear-gradient(
+    to bottom,
+    color-mix(in srgb, var(--world-background) 55%, transparent) 0%,
+    transparent 100%
+  );
+}
+
+.facet-portal-gradient {
+  opacity: 0.85;
+}
+
+.world-theme [data-facet="scene"] .facet-portal-gradient {
+  background: linear-gradient(
+    to bottom right,
+    color-mix(in srgb, var(--world-primary) 32%, rgb(16 185 129 / 0.2)),
+    color-mix(in srgb, var(--world-accent) 10%, transparent),
+    transparent
+  );
+}
+
+.world-theme [data-facet="people"] .facet-portal-gradient {
+  background: linear-gradient(
+    to bottom right,
+    color-mix(in srgb, var(--world-secondary) 30%, rgb(139 92 246 / 0.2)),
+    color-mix(in srgb, var(--world-primary) 8%, transparent),
+    transparent
+  );
+}
+
+.world-theme [data-facet="playlist"] .facet-portal-gradient {
+  background: linear-gradient(
+    to bottom right,
+    color-mix(in srgb, var(--world-accent) 28%, transparent),
+    color-mix(in srgb, var(--world-primary) 12%, transparent),
+    transparent
+  );
+}
+
+.world-theme [data-facet="release"] .facet-portal-gradient {
+  background: linear-gradient(
+    to bottom right,
+    color-mix(in srgb, var(--world-secondary) 28%, rgb(14 165 233 / 0.18)),
+    color-mix(in srgb, var(--world-primary) 8%, transparent),
+    transparent
+  );
+}
+
+.world-theme [data-facet="connected"] .facet-portal-gradient {
+  background: linear-gradient(
+    to bottom right,
+    color-mix(in srgb, var(--world-primary) 26%, rgb(244 63 94 / 0.18)),
+    color-mix(in srgb, var(--world-accent) 8%, transparent),
+    transparent
+  );
+}
+
+.world-theme [data-facet="vibe"] .facet-portal-gradient {
+  background: linear-gradient(
+    to bottom right,
+    color-mix(in srgb, var(--world-accent) 22%, rgb(139 92 246 / 0.14)),
+    color-mix(in srgb, var(--world-secondary) 10%, transparent),
+    transparent
+  );
+}
+
+.world-theme .facet-portal-button:hover {
+  border-color: color-mix(in srgb, var(--world-accent) 35%, var(--border));
+}
+
+.world-theme .text-world-accent {
+  color: var(--world-accent);
+}
+
+.world-theme .border-world-accent {
+  border-color: color-mix(in srgb, var(--world-accent) 35%, var(--border));
+}
+
+.world-theme .bg-world-accent {
+  background-color: var(--world-accent);
+}
+
+.world-theme .bg-world-accent-muted {
+  background-color: color-mix(in srgb, var(--world-accent) 15%, transparent);
+}
+
+.world-theme .ring-world-accent {
+  --tw-ring-color: color-mix(in srgb, var(--world-accent) 35%, transparent);
+}
+
+.world-theme .world-facet-sheet-header {
+  border-bottom-color: color-mix(in srgb, var(--world-accent) 22%, var(--border));
+}
+
+.world-theme .world-facet-sheet-panel {
+  border-color: color-mix(in srgb, var(--world-accent) 18%, var(--border));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .world-page-wash {
+    transition: none;
+  }
+}

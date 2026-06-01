@@ -25,6 +25,8 @@ type YouMightAlsoLikeProps = {
   discovery?: RabbitHoleDiscoveryState;
   showDebug?: boolean;
   fixtureMode?: boolean;
+  /** When false, omit the in-section hero (e.g. Track Hub already shows track). */
+  showHero?: boolean;
 };
 
 type SaveState =
@@ -481,6 +483,7 @@ export function YouMightAlsoLike({
   playlist,
   discovery,
   showDebug = false,
+  showHero = true,
 }: YouMightAlsoLikeProps) {
   const pathname = usePathname();
   const searchParams = useSearchParams();
@@ -502,10 +505,22 @@ export function YouMightAlsoLike({
 
   return (
     <PreviewProvider>
-      <section aria-label="Recommendations" className="pb-28">
-        <SlideUp>
-          <RootHero rootTrack={rootTrack} showDebug={showDebug} previewOnly={previewOnly} />
-        </SlideUp>
+      <section aria-label="Recommendations" className={showHero ? "pb-28" : "pb-24"}>
+        {showHero && (
+          <SlideUp>
+            <RootHero
+              rootTrack={rootTrack}
+              showDebug={showDebug}
+              previewOnly={previewOnly}
+            />
+          </SlideUp>
+        )}
+
+        {!showHero && (
+          <p className="mb-3 text-sm text-muted">
+            Pick tracks from this world — save to Spotify when URIs are available.
+          </p>
+        )}
 
         {degraded && discovery && (
           <div className="mt-3">
